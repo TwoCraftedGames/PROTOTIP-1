@@ -10,13 +10,19 @@ public class PlayerMovement1 : MonoBehaviour
 
     private Rigidbody2D rb2d;
 
+    public bool canMove;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate()  {
+
+        if(!canMove)
+        {
+            return;
+        }
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
